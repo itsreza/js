@@ -1,0 +1,28 @@
+let range = rangeNumber();
+let randomNum = generateRandNum (range.minNumber , range.maxNumber );
+let guessCounter = parseInt(prompt('تعداد حدس های شما'));
+let guessLevel = 0;
+while (guessCounter > 0){
+    let userInput = parseInt(prompt('حدس خود را وارد کنید'));
+    if(userInput == randomNum ){
+        alert('شما در حدس' + (guessLevel+1) + 'به پاسخ درست رسیدید و برنده شدید');
+        break;
+    } else if ( guessCounter > 1 && userInput != randomNum) {
+        alert('حدس شما نادرست بود اما هنوز' + (guessCounter-1) + 'فرصت دیگر دارید');
+    } else {
+        alert('شما بازنده شدید')
+    }
+    guessCounter--;
+    guessLevel++;
+}
+
+function rangeNumber(){
+    let minNumber = parseInt(prompt('کمترین عدد را وارد کنید'));
+    let maxNumber = parseInt(prompt('بیشترین عدد را وارد کنید'));
+    return {minNumber , maxNumber};
+}
+
+function generateRandNum (inputMin , inputMax){
+    return Math.floor(Math.random() * (inputMax - inputMin) + inputMin );
+}
+
